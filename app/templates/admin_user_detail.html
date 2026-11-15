@@ -1,0 +1,15 @@
+{% extends 'base.html' %}{% block title %}Detail User{% endblock %}
+{% block content %}
+<h3>Detail Pengguna</h3>
+<ul class="list-group col-md-6">
+  <li class="list-group-item"><b>ID:</b> {{user.id}}</li>
+  <li class="list-group-item"><b>Username:</b> {{user.username}}</li>
+  <li class="list-group-item"><b>Email:</b> {{user.email}}</li>
+  <li class="list-group-item"><b>Role:</b> {{user.role}}</li>
+  <li class="list-group-item"><b>Aktif:</b> {{user.is_active}}</li>
+  <li class="list-group-item"><b>Dibuat:</b> {{user.created_at}}</li>
+  <li class="list-group-item"><b>Jumlah catatan:</b> {{user.notes|length}}</li>
+</ul>
+<p class="mt-2 text-muted">Tidak menampilkan password_hash atau isi catatan.</p>
+<a class="btn btn-secondary mt-2" href="{{ url_for('admin.users') }}">Kembali</a>
+{% endblock %}

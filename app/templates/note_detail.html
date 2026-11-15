@@ -1,0 +1,14 @@
+{% extends 'base.html' %}{% block title %}{{ note.title }}{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between"><h3>{{ note.title }}</h3>
+  <div>
+    <a class="btn btn-sm btn-outline-primary" href="{{ url_for('notes.edit', note_id=note.id) }}">Edit</a>
+  </div>
+</div>
+<p class="text-muted">Diperbarui: {{ note.updated_at.strftime('%Y-%m-%d %H:%M') }}</p>
+<div class="card p-3 mb-3 note-content">{{ content }}</div>
+<form method="post" action="{{ url_for('notes.delete', note_id=note.id) }}" onsubmit="return confirm('Hapus catatan ini?');">
+  <button class="btn btn-danger">Hapus</button>
+  <a class="btn btn-secondary" href="{{ url_for('notes.list_notes') }}">Kembali</a>
+</form>
+{% endblock %}

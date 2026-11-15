@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# App secrets & runtime
+.env
+instance/*.db
+instance/*.sqlite3
+config/secret_key.txt
+config/encryption.key
+
+# IDE/OS
+.vscode/
+*.swp
+Thumbs.db
+
+# Backup artifacts
+backups/
+*.bak

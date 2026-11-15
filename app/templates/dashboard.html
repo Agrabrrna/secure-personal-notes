@@ -1,0 +1,23 @@
+{% extends 'base.html' %}{% block title %}Dashboard{% endblock %}
+{% block content %}
+<h3>Dashboard</h3>
+<p>Halo, <strong>{{ current_user().username if current_user() else '' }}</strong> ({{ current_user().email if current_user() else '' }})</p>
+<div class="row mb-3">
+  <div class="col-md-4"><div class="card p-3"><div>Total catatan</div><h4>{{ total }}</h4></div></div>
+</div>
+<h5>5 catatan terbaru</h5>
+{% if recent %}
+  <ul class="list-group mb-3">
+  {% for n in recent %}
+    <li class="list-group-item d-flex justify-content-between">
+      <a href="{{ url_for('notes.detail', note_id=n.id) }}">{{ n.title }}</a>
+      <small>{{ n.updated_at.strftime('%Y-%m-%d %H:%M') }}</small>
+    </li>
+  {% endfor %}
+  </ul>
+{% else %}
+  <div class="alert alert-secondary">Belum ada catatan. <a href="{{ url_for('notes.create_note') }}">Buat sekarang</a>.</div>
+{% endif %}
+<a class="btn btn-success" href="{{ url_for('notes.create_note') }}">Catatan baru</a>
+<a class="btn btn-outline-primary" href="{{ url_for('notes.list_notes') }}">Semua catatan</a>
+{% endblock %}

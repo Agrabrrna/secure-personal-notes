@@ -1,0 +1,10 @@
+{% extends 'base.html' %}{% block title %}{{ 'Edit' if note else 'Buat' }} Catatan{% endblock %}
+{% block content %}
+<h3>{{ 'Edit' if note else 'Buat' }} Catatan</h3>
+<form method="post" class="col-md-8">
+  <div class="mb-2"><label class="form-label">Judul</label><input name="title" class="form-control" required value="{{ note.title if note else '' }}"></div>
+  <div class="mb-2"><label class="form-label">Isi</label><textarea name="content" class="form-control" rows="10">{{ content if note else '' }}</textarea></div>
+  <button class="btn btn-primary">Simpan</button>
+  <a class="btn btn-secondary" href="{{ url_for('notes.list_notes') }}">Batal</a>
+</form>
+{% endblock %}
